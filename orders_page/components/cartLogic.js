@@ -157,7 +157,7 @@ function render() {
 
 
 window.placeOrder = () => {
-    alert("🎉 Order placed! Thank you for choosing Amigo's Pizza.");
+    alert("Order placed! Thank you for choosing Amigo's Pizza.");
     clearCart();
     render();
 };
