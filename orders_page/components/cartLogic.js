@@ -73,16 +73,15 @@ function render() {
     const itemsHTML = cart.map((item, idx) => `
         <div class="cart-item" style="animation-delay:${idx * 0.07}s" id="cart-item-${item.id}">
             <img  class="item-img" src="${item.src}" alt="${item.name}" />
-            <div class="item-img-placeholder" style="display:none;">🍕</div>
 
             <div class="item-info">
                 <div class="item-name">${item.name}</div>
-                <div class="item-unit-price">₹${item.price} each</div>
+                <div class="item-unit-price">$${item.price} each</div>
             </div>
 
                     <div class="item-right">
                         <div class="item-total-price" id="price-${item.id}">
-                            ₹${item.price * item.quantity}
+                            $${item.price * item.quantity}
                         </div>
                         <div class="stepper">
                             <button class="stepper-btn" data-action="sub" data-id="${item.id}">−</button>
@@ -103,11 +102,11 @@ function render() {
                     <div class="bill-header">Bill Summary</div>
                     <div class="bill-row">
                         <span>Item total</span>
-                        <span class="bill-value" id="bill-subtotal">₹${subtotal}</span>
+                        <span class="bill-value" id="bill-subtotal">$${subtotal}</span>
                     </div>
                     <div class="bill-row">
                         <span>GST (5%)</span>
-                        <span class="bill-value" id="bill-tax">₹${tax}</span>
+                        <span class="bill-value" id="bill-tax">$${tax}</span>
                     </div>
                     <div class="bill-row">
                         <span>Delivery fee</span>
@@ -115,12 +114,12 @@ function render() {
                     </div>
                     <div class="bill-row total">
                         <span>To Pay</span>
-                        <span class="bill-value" id="bill-total">₹${total}</span>
+                        <span class="bill-value" id="bill-total">$${total}</span>
                     </div>
                 </div>
             `;
 
-    document.getElementById("footer-total").textContent = `₹${total}`;
+    document.getElementById("footer-total").textContent = `$${total}`;
     footer.style.display = "flex";
 
     document.querySelector(".cart-list").addEventListener("click", (e) => {
@@ -140,15 +139,15 @@ function render() {
         const cart2 = getCart();
         const item = cart2.find(i => i.id === id);
         document.getElementById(`qty-${id}`).textContent = qty;
-        document.getElementById(`price-${id}`).textContent = `₹${item.price * qty}`;
+        document.getElementById(`price-${id}`).textContent = `$${item.price * qty}`;
 
         const sub2 = cart2.reduce((s, i) => s + i.price * i.quantity, 0);
         const tax2 = Math.round(sub2 * TAX_RATE);
         const total2 = sub2 + tax2;
-        document.getElementById("bill-subtotal").textContent = `₹${sub2}`;
-        document.getElementById("bill-tax").textContent = `₹${tax2}`;
-        document.getElementById("bill-total").textContent = `₹${total2}`;
-        document.getElementById("footer-total").textContent = `₹${total2}`;
+        document.getElementById("bill-subtotal").textContent = `$${sub2}`;
+        document.getElementById("bill-tax").textContent = `$${tax2}`;
+        document.getElementById("bill-total").textContent = `$${total2}`;
+        document.getElementById("footer-total").textContent = `$${total2}`;
 
         const totalItems2 = cart2.reduce((s, i) => s + i.quantity, 0);
         document.getElementById("item-count-label").textContent =

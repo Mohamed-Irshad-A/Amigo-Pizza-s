@@ -27,4 +27,3 @@ pageNavigatorNo.addEventListener("click", () => {
     popUpDisappear();
 })
 
-
